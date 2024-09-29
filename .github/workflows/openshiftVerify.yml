@@ -1,6 +1,10 @@
 name: Verify OpenShift YAML Syntax
 
 on:
+  push:
+    branches:
+      - 'releasev*'
+      - '!main'
   pull_request:
     paths:
       - '**/*.yaml'
