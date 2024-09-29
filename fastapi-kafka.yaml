@@ -1,0 +1,49 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: fastapi-kafka
+  namespace: bitroid-dev
+spec:
+  template:
+    spec:
+      containers:
+        - image: quay.io/hemanth22/fastapi-kafka-receiver:releasev1
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          env:
+            - name: BOOTSTRAP_SERVER_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-kafka-receiver
+                  key: BOOTSTRAP_SERVER_NAME
+            - name: FASTAPI_WEBHOOK_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-kafka-receiver
+                  key: FASTAPI_WEBHOOK_SERVERLESS
+            - name: FASTAPI_WEBHOOK_SERVERLESS
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-kafka-receiver
+                  key: FASTAPI_WEBHOOK_SERVERLESS
+            - name: SASL_MECH
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-kafka-receiver
+                  key: SASL_MECH
+            - name: SASL_PASSD
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-kafka-receiver
+                  key: SASL_PASSD
+            - name: SASL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-kafka-receiver
+                  key: SASL_USERNAME
+            - name: SSL_SEC
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-kafka-receiver
+                  key: SSL_SEC

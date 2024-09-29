@@ -1,0 +1,23 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: fastapi-webhook
+  namespace: bitroid-dev
+spec:
+  template:
+    spec:
+      containers:
+        - image: quay.io/hemanth22/fastapi-webhook-receiver:releasev3
+          ports:
+            - containerPort: 8000
+          env:
+            - name: telegram_id
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-webhook-receiver
+                  key: telegram_id
+            - name: telegram_api_key
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-webhook-receiver
+                  key: telegram_api_key
