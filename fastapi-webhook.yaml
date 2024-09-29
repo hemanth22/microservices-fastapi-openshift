@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       containers:
-        - image: quay.io/hemanth22/fastapi-webhook-receiver:releasev3
+        - image: quay.io/hemanth22/fastapi-webhook-receiver:releasev5
           ports:
             - containerPort: 8000
           env:
