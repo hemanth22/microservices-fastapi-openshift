@@ -1,0 +1,32 @@
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: quay.io/hemanth22/rockylinux9:9
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - checkout
+      - run:
+          name: Print Python Verson
+          command: |
+            dnf install python3-pip -y
+            python3 -V
+            python3 -m pip install requests
+      - run:
+          name: Installation of OpenShift CommandLine
+          command: |
+            wget https://downloads-openshift-console.apps.sandbox-m3.1530.p1.openshiftapps.com/amd64/linux/oc.tar
+      - run:
+          name: Extraction of OpenShift CLI
+          command: |
+            tar xf oc.tar
+            ls -ltrh
+
+workflows:
+  notify_app:
+    jobs:
+      - build
