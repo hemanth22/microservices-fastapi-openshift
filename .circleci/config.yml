@@ -30,6 +30,7 @@ jobs:
           name: Print Verison of OpenShift CLI
           command: |
             ./oc version
+            chmod 777 OpenShiftSecretCreator.sh OpenShiftSecretCreator1.sh
       - run:
           name: Preparation of Secrets files
           command: |
