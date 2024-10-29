@@ -26,6 +26,7 @@ jobs:
           command: |
             tar xf oc.tar
             ls -ltrh
+            ./oc version
 
 workflows:
   notify_app:
