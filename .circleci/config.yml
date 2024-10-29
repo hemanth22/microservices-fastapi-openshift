@@ -16,6 +16,7 @@ jobs:
             dnf install python3-pip -y
             python3 -V
             python3 -m pip install requests
+            dnf install -y wget tar zip
       - run:
           name: Installation of OpenShift CommandLine
           command: |
