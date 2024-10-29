@@ -41,6 +41,13 @@ jobs:
           name: Login to OpenShift CLI
           command: |
             ./oc login --token=$OPENSHIFT_TOKEN --server=$OPENSHIFT_URL -n $OPENSHIFT_NAMESPACE
+      - run:
+          name: On-boarding projects to OpenShift
+          command: |
+            ./oc apply -f $OPENSHIFT_SECRET_NAME1.yaml
+            ./oc apply -f $OPENSHIFT_SECRET_NAME2.yaml
+            ./oc apply -f fastapi-kafka.yaml
+            ./oc apply -f fastapi-webhook.yaml
 
 workflows:
   notify_app:
