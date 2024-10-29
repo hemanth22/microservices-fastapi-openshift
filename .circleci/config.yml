@@ -26,7 +26,14 @@ jobs:
           command: |
             tar xf oc.tar
             ls -ltrh
+      - run:
+          name: Print Verison of OpenShift CLI
+          command: |
             ./oc version
+      - run:
+          name: Login to OpenShift CLI
+          command: |
+            ./oc login --token=$OPENSHIFT_TOKEN --server=$OPENSHIFT_URL -n $OPENSHIFT_NAMESPACE
 
 workflows:
   notify_app:
