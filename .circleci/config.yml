@@ -31,6 +31,12 @@ jobs:
           command: |
             ./oc version
       - run:
+          name: Preparation of Secrets files
+          command: |
+            ./OpenShiftSecretCreator.sh
+            ./OpenShiftSecretCreator1.sh
+            ls -ltrh
+      - run:
           name: Login to OpenShift CLI
           command: |
             ./oc login --token=$OPENSHIFT_TOKEN --server=$OPENSHIFT_URL -n $OPENSHIFT_NAMESPACE
