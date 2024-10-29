@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Read the value from the environment variable and encode it in base64
-SECRET_VALUE1=$(echo -n "${BOOTSTRAP_SERVER_NAME}" | base64)
-SECRET_VALUE2=$(echo -n "${FASTAPI_WEBHOOK_SERVER}" | base64)
-SECRET_VALUE3=$(echo -n "${FASTAPI_WEBHOOK_SERVERLESS}" | base64)
-SECRET_VALUE4=$(echo -n "${SASL_MECH}" | base64)
-SECRET_VALUE5=$(echo -n "${SASL_PASSD}" | base64)
-SECRET_VALUE6=$(echo -n "${SASL_USERNAME}" | base64)
-SECRET_VALUE7=$(echo -n "${SSL_SEC}" | base64)
+SECRET_VALUE1=$(echo -n "${BOOTSTRAP_SERVER_NAME}" | base64 | tr -d '\n\r')
+SECRET_VALUE2=$(echo -n "${FASTAPI_WEBHOOK_SERVER}" | base64 | tr -d '\n\r')
+SECRET_VALUE3=$(echo -n "${FASTAPI_WEBHOOK_SERVERLESS}" | base64 | tr -d '\n\r')
+SECRET_VALUE4=$(echo -n "${SASL_MECH}" | base64 | tr -d '\n\r')
+SECRET_VALUE5=$(echo -n "${SASL_PASSD}" | base64 | tr -d '\n\r')
+SECRET_VALUE6=$(echo -n "${SASL_USERNAME}" | base64 | tr -d '\n\r')
+SECRET_VALUE7=$(echo -n "${SSL_SEC}" | base64 | tr -d '\n\r')
 
 
 # Generate the secret YAML
