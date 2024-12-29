@@ -1,6 +1,0 @@
-{
-    "circleci.filters.branchFilter": "allBranches",
-    "circleci.persistedProjectSelection": [
-        "gh/hemanth22/microservices-fastapi-openshift"
-    ]
-}
